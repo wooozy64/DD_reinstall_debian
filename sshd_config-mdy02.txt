@@ -1,0 +1,104 @@
+Protocol 2
+
+# =============================
+# 基础身份控制
+# =============================
+
+PermitRootLogin yes
+PasswordAuthentication yes
+PubkeyAuthentication yes
+AuthenticationMethods publickey password
+PermitEmptyPasswords no
+KbdInteractiveAuthentication no
+ChallengeResponseAuthentication no
+
+#AllowUsers youruser
+
+# =============================
+# 登录限制
+# =============================
+
+LoginGraceTime 20
+MaxAuthTries 2
+MaxSessions 1
+MaxStartups 5:10:20
+
+ClientAliveInterval 300
+ClientAliveCountMax 1
+TCPKeepAlive no
+
+# =============================
+# 完全关闭转发
+# =============================
+
+DisableForwarding yes
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding no
+PermitTunnel no
+PermitOpen none
+PermitListen none
+GatewayPorts no
+
+# =============================
+# PAM 与环境
+# =============================
+
+UsePAM no
+PermitUserEnvironment no
+AcceptEnv none
+PrintMotd no
+PrintLastLog yes
+
+# =============================
+# 日志
+# =============================
+
+LogLevel VERBOSE
+SyslogFacility AUTHPRIV
+
+# =============================
+# HostKey 只用 ed25519
+# =============================
+
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKeyAlgorithms ssh-ed25519
+PubkeyAcceptedAlgorithms ssh-ed25519
+RequiredRSASize 4096
+
+# =============================
+# 加密算法（最强子集）
+# =============================
+
+KexAlgorithms sntrup761x25519-sha512@openssh.com
+Ciphers chacha20-poly1305@openssh.com
+MACs hmac-sha2-512-etm@openssh.com
+
+# =============================
+# 会话控制
+# =============================
+
+Compression no
+StrictModes yes
+IgnoreRhosts yes
+HostBasedAuthentication no
+KerberosAuthentication no
+GSSAPIAuthentication no
+
+# =============================
+# 其他
+# =============================
+
+Banner none
+VersionAddendum none
+FingerprintHash SHA256
+
+# =============================
+# 极端加强
+# =============================
+#Match Address 1.2.3.4
+#    AllowUsers youruser
+
+#Match all
+#    DenyUsers *
+

@@ -1,0 +1,53 @@
+
+    # =========================
+    # 密钥
+    # =========================
+    PubkeyAuthentication yes
+    PasswordAuthentication yes
+    KbdInteractiveAuthentication no
+    GSSAPIAuthentication no
+    BatchMode yes
+    IdentitiesOnly yes
+
+    IdentityFile ~/.ssh/id_ed25519
+
+    # =========================
+    # 严格主机校验
+    # =========================
+    StrictHostKeyChecking yes
+    VerifyHostKeyDNS no
+    CheckHostIP yes
+    HashKnownHosts yes
+    UpdateHostKeys no
+
+    # =========================
+    # 强制最强算法
+    # =========================
+    KexAlgorithms sntrup761x25519-sha512@openssh.com
+    Ciphers chacha20-poly1305@openssh.com
+    MACs hmac-sha2-512-etm@openssh.com
+
+    HostKeyAlgorithms ssh-ed25519
+    PubkeyAcceptedAlgorithms ssh-ed25519
+
+    RequiredRSASize 4096
+
+    # =========================
+    # 关闭所有转发
+    # =========================
+    ForwardAgent no
+    ForwardX11 no
+    PermitLocalCommand no
+    ClearAllForwardings yes
+    Tunnel no
+
+    # =========================
+    # 连接控制
+    # =========================
+    ConnectTimeout 10
+    ConnectionAttempts 1
+    ServerAliveInterval 300
+    ServerAliveCountMax 1
+
+    Compression no
+    LogLevel INFO

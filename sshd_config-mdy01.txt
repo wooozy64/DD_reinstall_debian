@@ -1,0 +1,98 @@
+LogLevel VERBOSE
+AddressFamily any
+x11DisplayOffset 10
+StreamLocalBindMask 0177
+unusedConnectionTimeout none
+IgnoreRhosts yes
+ignoreUserKnownHosts no
+HostBasedAuthentication no
+HostBasedUsesNameFromPacketOnly no
+KerberosAuthentication no
+KerberosOrLocalPasswd yes
+KerberosTicketCleanup yes
+GSSApiAuthentication no
+GSSApiCleanupCredentials yes
+GSSApiKeyExchange no
+GSSAPIStrictAcceptorCheck yes
+GSSAPIStoreCredentialsOnRekey no
+GSSApiKexAlgorithms gss-group14-sha256-,gss-group16-sha512-,gss-nistp256-sha256-,gss-curve25519-sha256-,gss-group14-sha1-,gss-gex-sha1-
+PrintMotd no
+x11UseLocalHost yes
+PermitTTY yes
+PermitUserRC yes
+StrictModes yes
+GatewayPorts no
+UseDNS no
+AllowStreamLocalForwarding yes
+StreamLocalBindUnlink no
+FingerPrintHash SHA256
+ExposeAuthInfo no
+pidFile /run/sshd.pid
+ModuliFile /etc/ssh/moduli
+xAuthLocation /usr/bin/xauth
+ForceCommand none
+RevokedKeys none
+SecurityKeyProvider internal
+AuthorizedPrincipalsFile none
+VersionAddendum none
+AuthorizedKeysCommand none
+AuthorizedKeysCommandUser none
+AuthorizedPrincipalsCommand none
+AuthorizedPrincipalsCommandUser none
+HostKeyAgent none
+CASignatureAlgorithms ssh-ed25519,sk-ssh-ed25519@openssh.com
+HostBasedAcceptedAlgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+SyslogFacility AUTH
+AuthorizedKeysFile .ssh/authorized_keys .ssh/authorized_keys2
+HostKey /etc/ssh/ssh_host_ed25519_key
+AcceptEnv LANG
+AcceptEnv LC_*
+PerSourceMaxStartups none
+PerSourceNetBlockSize 32:128
+PermitTunnel no
+ipqos lowdelay throughput
+RekeyLimit 0 0
+PermitOpen none
+PermitListen none
+PermitUserEnvironment no
+PubkeyAuthOptions none
+# Encryption Algorithm
+RequiredRSAsize 3072
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr
+HostKeyAlgorithms ssh-ed25519
+KexAlgorithms sntrup761x25519-sha512@openssh.com,curve25519-sha256
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
+# Authentication Switch
+AuthenticationMethods any #any publickey,password
+PubkeyAuthentication true
+PubkeyAcceptedAlgorithms ssh-ed25519
+PasswordAuthentication yes
+PermitRootLogin prohibit-password
+PermitEmptyPasswords no
+MaxAuthTries 3
+MaxSessions 2
+ChallengeResponseAuthentication no
+KbdInteractiveAuthentication no
+UsePAM yes
+# Some Configuration
+Protocol 2
+TcpKeepAlive yes
+X11Forwarding no
+AllowTcpForwarding no
+AllowAgentForwarding no
+DisableForwarding yes
+PrintLastLog yes
+Compression no
+#AllowUsers
+#DenyUsers
+LoginGraceTime 30
+ClientAliveInterval 300
+ClientAliveCountMax 3
+MaxStartups 10:30:60
+#RekeyLimit
+#UsePrivilegeSeparation
+#Subsystem  sftp /usr/lib/openssh/sftp-server
+#Banner /etc/ssh/banner
+#RevokedKeys /etc/ssh/revoked_keys
+ChrootDirectory none
+TrustedUserCAKeys none

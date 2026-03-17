@@ -1,0 +1,96 @@
+
+Protocol 2
+
+# =============================
+# Basic Identity Control
+# =============================
+# PermitRootLogin suggest prohibit-password
+PermitRootLogin yes
+PasswordAuthentication yes
+PubkeyAuthentication yes
+AuthenticationMethods publickey password
+PermitEmptyPasswords no
+KbdInteractiveAuthentication no
+ChallengeResponseAuthentication no
+
+#AllowUsers youruser
+
+# =============================
+# Login Restrictions
+# =============================
+LoginGraceTime 20
+MaxAuthTries 2
+MaxSessions 3
+MaxStartups 5:10:20
+
+ClientAliveInterval 300
+ClientAliveCountMax 1
+TCPKeepAlive no
+
+# =============================
+# Completely disable forwarding
+# =============================
+DisableForwarding yes
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding no
+PermitTunnel no
+PermitOpen none
+PermitListen none
+GatewayPorts no
+
+# =============================
+# PAM and the Environment
+# =============================
+UsePAM no
+PermitUserEnvironment no
+AcceptEnv none
+PrintMotd no
+PrintLastLog yes
+
+# =============================
+# Log
+# =============================
+LogLevel VERBOSE
+SyslogFacility AUTHPRIV
+
+# =============================
+# HostKey Only Use ed25519
+# =============================
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKeyAlgorithms ssh-ed25519
+PubkeyAcceptedAlgorithms ssh-ed25519
+RequiredRSASize 4096
+
+# =============================
+# Encryption Algorithms (Strongest Subset)
+# =============================
+KexAlgorithms sntrup761x25519-sha512@openssh.com
+Ciphers chacha20-poly1305@openssh.com
+MACs hmac-sha2-512-etm@openssh.com
+
+# =============================
+# Session Control
+# =============================
+Compression no
+StrictModes yes
+IgnoreRhosts yes
+HostBasedAuthentication no
+KerberosAuthentication no
+GSSAPIAuthentication no
+
+# =============================
+# Others
+# =============================
+Banner none
+VersionAddendum none
+FingerprintHash SHA256
+
+# =============================
+# Extreme Enhancement
+# =============================
+#Match Address 1.2.3.4
+#    AllowUsers youruser
+
+#Match all
+#    DenyUsers *
